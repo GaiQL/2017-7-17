@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <input type="file" name="img" accept="image/png, image/jpeg, image/gif, image/jpg" id="input"/>
+    <!--
+      accept 属性只能与 <input type="file"> 配合使用。它规定能够通过文件上传进行提交的文件类型。
+      多个属性值使用逗号分隔<input accept="audio/*,video/*,image/*">
+    -->
+    <img src="" id="img"/>
+  </body>
+  <script type="text/javascript">
+    let img = document.getElementById('img');
+    let input = document.getElementById('input');
+
+    // method
+    // method
+    // method
+    // 方法
+
+    // method One      这个我以前写豆瓣的时候好像用过....忘记了....
+      // input.onchange = function(){
+      //
+      //   var reads= new FileReader();
+      //   reads.readAsDataURL(this.files[0]);
+      //   reads.onload=function (e) {
+      //       img.src = this.result;
+      //   };
+      //
+      // }
+
+    // method Two
+      input.onchange = function(){
+
+        var newsrc = getObjectURL(this.files[0]);
+        img.src = newsrc;
+
+      }
+      function getObjectURL(file) {
+
+           var url = null ;
+           // 针对不同的浏览器的执行接口
+           if (window.createObjectURL != undefined) {
+              // basic
+               url = window.createObjectURL(file);
+           } else if (window.URL != undefined) {
+             // mozilla(firefox)
+               url = window.URL.createObjectURL(file);
+           } else if (window.webkitURL != undefined) {
+             // webkit or chrome
+               url = window.webkitURL.createObjectURL(file);
+           }
+           return url ;
+
+       }
+
+       //按照前辈们的说法，creatObjectURL可以有更好的性能，或许是浏览器自带接口的原因, 可以处理的更快。
+
+  </script>
+</html>
