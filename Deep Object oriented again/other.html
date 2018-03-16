@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+
+      function Haha(name){
+        this.name = name
+        return {
+          age:18
+        }
+      }
+      var heihei = new Haha('you oriented');
+      console.log(heihei.name)
+      console.log(heihei.constructor)
+      console.log( heihei instanceof Haha )
+      //函数中  return对象  Object对象构造的....
+      console.log(Object)
+
+      var heihei = {
+        a:1,
+        b:2,
+        c:3
+      }
+      console.log( "a" in heihei )  //true
+
+      var haha = {};
+      function what(){
+        this.a = 1
+      }
+      haha = new what();
+      console.log(haha.prototype == new what().prototype)
+      console.log(haha)
+      console.log(new what)
+
+      //构造函数的 Prototype 的 constructor 指向被改变，那么实例化出来的对象指向也会被改变么
+      //好吧，是这样的.....
+      function Animal_K(){
+      }
+      Animal_K.prototype.species = "动物";
+      Animal_K.prototype.constructor = Cat_K;
+      function Cat_K(name,color){
+      　　this.name = name;
+      　　this.color = color;
+      }
+      var _No = new Animal_K();
+      console.log( _No.constructor )    //  Cat_K
+      console.log( _No.prototype )    
+
+      //constructor 是由谁来提供的？构造函数的 prototype 么，不然为什么实例化出来的对象constructor指向会随着prototype的改变而改变
+
+
+    </script>
+  </body>
+</html>
