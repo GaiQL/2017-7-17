@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+
+    let data = {
+    	facial:{
+    		type:"medicine-box",
+    		title:"医美管理",
+    		list:{
+    			facialhomepage:"医美首页管理",
+    			itemCls:"项目分类",
+    			baseItemLibrary:"基础项目库",
+    			itemBrand:"项目品牌",
+    			itemNorms:"项目规格",
+    			citys:"区域管理",
+    			organization:"机构审核",
+    			organizationLibrary:"医美机构库",
+    			medicinerAudit:"医生审核",
+    			medicinerLibrary:"医生库",
+    			itemAudit:"项目审核",
+    			itemManage:"项目管理",
+    			ordersManage:"订单管理",
+    			// advertManage:"广告管理",
+    			// facialType:"医美机构类型",
+    			diary:"对比照评价管理",
+    			notepad:"对比照管理",
+    		}
+    	},
+    	massage:{
+    		type:"like-o",
+    		title:"按摩管理",
+    		list:{
+    			massagehomepage:"按摩首页管理",
+    			itemCls:"项目分类",
+    			// baseItemLibrary:"基础项目库",
+    			citys:"区域管理",
+    			organization:"机构审核",
+    			organizationLibrary:"按摩机构库",
+    			technicianAudit:"技师审核",
+    			technicianLibrary:"技师库",
+    			itemAudit:"项目审核",
+    			itemManage:"项目管理",
+    			ordersManage:"订单管理",
+    			// advertManage:"广告管理",
+    			// massageType:"按摩机构类型"
+    		}
+    	},
+    	party:{
+    		type:"smile-o",
+    		title:"派对管理",
+    		list:{
+    			partyList:"派对列表",
+    			itemManage:"项目管理",
+    			// review:"精彩回顾",
+    			ordersManage:"订单管理",
+    			// commentary:"评论管理",
+    			// reply:"回复管理"
+    		}
+    	},
+    	clearing:{
+    		type:"pay-circle-o",
+    		title:"结算管理",
+    		list:{
+    			organiClearing:"机构结算设置",
+    			confirmRefund:"未核销退款",
+    			organiOrdersClearing:"机构结算",
+    			organiOrdersList:"机构结算流水",
+    			partyOrders:"派对订单"
+    		}
+    	},
+    	baseInfoManage:{
+    		type:"lock",
+    		title:"基本信息管理",
+    		list:{
+    			service:"服务承诺"
+    		}
+    	},
+    	communityManage:{
+    		type:"lock",
+    		title:"社区管理",
+    		list:{
+    			communityhomepage:"社区首页管理",
+    			communityCls:"社区分类",
+    			communityCircle:'社区圈子',
+    			hotTopicManage:'帖子管理',
+    			commentManage:'评论管理'
+    		}
+    	},
+    	coupon:{
+    		type:"lock",
+    		title:"优惠券",
+    		list:{
+    			couponManagement:"优惠券管理"
+    		}
+    	},
+    	privilege:{
+    		type:"lock",
+    		title:"权限管理",
+    		list:{
+    			adminRole:"管理员角色",
+    			administrator:"管理员管理",
+    			createBD:"新增BD"
+    		}
+    	},
+    	user:{
+    		type:"lock",
+    		title:"用户管理",
+    		list:{
+    			userManage:"用户管理"
+    		}
+    	}
+    }
+
+
+  let protData =   {
+      "data": [
+        {
+          "text": "Hotr OSS",
+          "children": [
+            {
+              "text": "权限管理",
+              "children": [
+                {
+                  "text": "管理员角色",
+                  "code": null,
+                  "leaf": true,
+                  "expanded": true,
+                  "key": "51"
+                },
+                {
+                  "text": "管理员管理",
+                  "code": null,
+                  "leaf": true,
+                  "expanded": true,
+                  "key": "52"
+                },
+                {
+                  "text": "新增BD",
+                  "code": null,
+                  "leaf": true,
+                  "expanded": true,
+                  "key": "53"
+                }
+              ],
+              "leaf": false,
+              "expanded": true,
+              "key": "5"
+            },
+            {
+              "text": "优惠券",
+              "children": [
+                {
+                  "text": "优惠券管理",
+                  "code": null,
+                  "leaf": true,
+                  "expanded": true,
+                  "key": "61"
+                }
+              ],
+              "leaf": false,
+              "expanded": true,
+              "key": "6"
+            },
+            {
+              "text": "承诺管理",
+              "children": [
+                {
+                  "text": "服务承诺",
+                  "code": null,
+                  "leaf": true,
+                  "expanded": true,
+                  "key": "71"
+                }
+              ],
+              "leaf": false,
+              "expanded": true,
+              "key": "7"
+            },
+            {
+              "text": "社区管理",
+              "children": [
+                {
+                  "text": "社区分类",
+                  "code": null,
+                  "leaf": true,
+                  "expanded": true,
+                  "key": "82"
+                },
+                {
+                  "text": "社区圈子",
+                  "code": null,
+                  "leaf": true,
+                  "expanded": true,
+                  "key": "83"
+                },
+                {
+                  "text": "帖子管理",
+                  "code": null,
+                  "leaf": true,
+                  "expanded": true,
+                  "key": "84"
+                },
+                {
+                  "text": "评论管理",
+                  "code": null,
+                  "leaf": true,
+                  "expanded": true,
+                  "key": "85"
+                }
+              ],
+              "leaf": false,
+              "expanded": true,
+              "key": "8"
+            },
+            {
+              "text": "用户管理",
+              "children": [
+                {
+                  "text": "用户管理",
+                  "code": null,
+                  "leaf": true,
+                  "expanded": true,
+                  "key": "91"
+                }
+              ],
+              "leaf": false,
+              "expanded": true,
+              "key": "9"
+            }
+          ],
+          "expanded": true
+        }
+      ],
+      "message": "",
+      "status": 200
+    }
+    //   把第二份存在的数据text按照第一份数据拉下来......
+
+    // console.log(data);
+    // console.log(protData);
+
+
+    protData = protData.data[0].children
+
+    let state = {};
+    let arr = [];
+    for( var hei in protData ){
+
+        for( let key in protData[hei].children ){
+          //所有存在的text
+          arr.push( protData[hei].children[key].text );
+
+        }
+
+    }
+
+    for( var key in data ){
+      for( var title in data[key].list ){
+
+        let onOff = true;
+
+        arr.forEach((e,i)=>{
+
+          if( e == data[key].list[title] ){
+            onOff = false;
+          }
+          if( e == data[key].list[title] && !state[key] ){
+            state[key] = data[key];
+          }
+        })
+
+        if( onOff ){
+          delete data[key].list[title]
+        }
+
+      }
+    }
+
+    console.log( state );
+
+    //   想不到优雅的方法了怎么办........  后面再更吧.....
+
+
+    </script>
+  </body>
+</html>
