@@ -98,6 +98,7 @@ console.log( all );
 
 //   定义一个不会产生中间数组，但直接对元素求和的 transformer。
 
+
 const xfplus2 = {
   step:(result, item) => {
     const plus1ed = plus1(item);
@@ -112,6 +113,10 @@ console.log( result2 );
 
 //  transducer：一个接受现有 transformer，并返回新 transformer 的函数。
 //  新 transformer 会改变原有 transformation 的行为，transducer 会将一些额外的处理委托给新的封装过的 transformer。
+
+
+//  plus1处理函数；
+//  对transducerPlus1进行再次封装，以便复用。   内容中只有plus1处理函数不同；
 const transducerPlus1 = (xf) => {
   console.log(xf);
   return {
@@ -131,6 +136,9 @@ const transducer = transducerPlus1;
 
 
 //中间辅助元素    :   不需要计算中间数组，一次迭代就可以得到结果。
+
+//  我们只取数组中的值进行加减计算，但不创造中间数组；    不需要中间辅助数组，只需改变 stepperadd 和初始值。
+
 const stepperadd = warp(sum);
 init = 0;
 var xf = transducer(stepperadd);
@@ -147,3 +155,90 @@ console.log( result );
         初始值使用 0 代替 []。
 
 */
+
+
+// DRY原则：   Don't repeat yourself   不要重复自己
+
+// YAGNI原则： You aren't gonna need it 你不会需要它
+
+// Rule Of Three原则  当某个功能第三次出现时，才进行"抽象化"。
+
+
+
+//map函数中拥有变量F，返回一个匿名函数，匿名函数中有一个变量XF，执行这个匿名函数，返回一个对象
+//  对象中的step函数，result上次处理的结果   item这次新增加的数据
+//map  用来处理   transformer  ;
+//xf  transformer
+//f   处理函数
+const method2 = result => result + 2;
+
+const map = f => xf => ({
+  init: () => xf.init(),
+  step: (result, item) => {
+    const plus1 = f(item);          //  3+2  处理传入的数据
+    return xf.step(result, plus1);   //  之前的结果与  传入的数据处理后的结果  相加   或其他方法；
+  },
+  result: result => result,
+})
+
+// const sum = (result, item) => result + item;     warp -> 生成transformer的函数  sum处理方法
+var seconed = map( method2 )( warp(append) );
+result = seconed.step( [],3 );
+result = seconed.step( result,4 );
+result = seconed.step( result,5 );
+var outres = seconed.result( result );
+console.log( outres );
+
+
+
+// var reduce = (xf, init, input) => {
+//   if( typeof xf === 'function' ){
+//     xf = warp(xf);
+//   }
+//   let result = input.reduce(xf.step, init);
+//   return xf.result(result);
+// };
+
+
+//  Transduce
+//   transducer  -----  map( method2 )    init 初始值   input 数据源
+//   stepper     -----  append、sum
+const transduce = ( transducer,stepper,init,input ) => {
+  if( typeof stepper == 'function' ){
+    stepper = warp( stepper );    //数据处理好后执行的方法
+  }
+  const xf = transducer(stepper);  // 处理每一个值的方法
+  return reduce( xf.step,init,input )   //   调用方法，利用   reduce  处理数据源，最终返回一个结果。
+}
+
+
+var transducerZ = map( method2 );
+var stepperZ = sum;
+var initZ = 0;
+var outputZ = transduce( transducerZ,stepperZ,initZ,[1,2,3,4,5] );
+console.log( outputZ );
+
+//    平常处理要先进数组里数据的处理，便利完成后把数组中所有的数字加1，返回一个新的数组，然后数组中的值在全部相加。
+//    我们可以在不依赖中间变量的情况下，遍历一次便可求得累加和或乘积:
+//          利用 reduce 去遍历数组，第一个参数处理数组中的每一个值，      map( method2 )( warp(append) ).step  ;
+
+                                                                    // (result, item) => {
+                                                                    //   const plus1 = f(item);         sum、append WRAP之后的值
+                                                                    //   return xf.step(result, plus1);
+                                                                    // }
+
+
+
+
+//     transduce 本质上做的事情是 在对每个元素进行归约之前先对其进行变换 ; 这也是 transduce 区别于 reduce 的 “ 唯一 ” 不同点
+
+
+
+
+
+
+// 箭头函数
+// const heiheiehi = wz => ({
+//   num:wz
+// }) ;
+// console.log( heiheiehi( 123 ) )
