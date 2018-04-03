@@ -48,7 +48,7 @@ const trans = filter(oddZ)(map(pow2Z)(sumZ));
 const data3 = rangeArr.reduce(trans, 0);
 console.log(data3);
 
-console.timeEnd( 'tryTime3' );
+console.timeEnd( 'tryTime3' );   
 
 // end  少量数据时，普通函数式编程的处理会比命令式更加快速。但在处理大型数据时，更倾向与使用命令式编程的方式。
 // 因为函数式编程，会由于多次遍历与大量中间数据的产生，造成严重的性能问题；
